@@ -6,10 +6,11 @@ defmodule NervesLivebook.Application do
   use Application
 
   def start(_type, _args) do
+    Nerves.Runtime.validate_firmware()
     initialize_data_directory()
 
     if target() != :host do
-      setup_wifi()
+      # setup_wifi()
       add_mix_install()
     end
 

@@ -4,8 +4,8 @@ import Config
 # See https://github.com/nerves-networking/vintage_net for more information
 config :vintage_net,
   config: [
-    {"usb0", %{type: VintageNetDirect}},
-    {"wlan0", %{type: VintageNetWiFi}}
+    {"usb0", %{type: VintageNetDirect}}
+    # {"wlan0", %{type: VintageNetWiFi}}
   ]
 
 config :nerves_livebook, :ui, led: "led0"

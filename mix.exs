@@ -50,6 +50,7 @@ defmodule NervesLivebook.MixProject do
       {:nerves_pack, "~> 0.7.0"},
       {:livebook, "~> 0.6.2"},
       {:plug, "~> 1.12"},
+      {:inky, path: "~/dev/forks/inky", targets: @all_targets},
 
       # Pull in commonly used libraries as a convenience to users.
       {:blue_heron, "~> 0.3", override: true, targets: @ble_targets},
