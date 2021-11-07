@@ -28,6 +28,27 @@ config :nerves, :erlinit,
   hostname_pattern: "nerves-%s",
   shutdown_report: "/data/last_shutdown.txt"
 
+key_paths =
+  [
+    ".ssh/id_rsa.pub",
+    ".ssh/id_desktop_rsa.pub",
+    ".ssh/id_laptop_rsa.pub",
+    ".ssh/id_nerves.pub",
+    ".ssh/id_air_laptop.pub"
+  ]
+  |> Enum.map(fn path -> Path.join(System.user_home!(), path) end)
+
+authorized_keys =
+  key_paths
+  |> Enum.filter(&File.exists?/1)
+  |> Enum.map(&File.read!/1)
+
+if Enum.empty?(authorized_keys),
+  do: Mix.raise("No SSH Keys found. Please generate an ssh key")
+
+config :nerves_ssh,
+  authorized_keys: authorized_keys
+
 # Configure the device for SSH IEx prompt access and firmware updates
 #
 # * See https://hexdocs.pm/nerves_ssh/readme.html for general SSH configuration
@@ -47,7 +68,7 @@ config :mdns_lite,
   dns_bridge_port: 53,
   dns_bridge_recursive: false,
   # Respond to "nerves-1234.local` and "nerves.local"
-  hosts: [:hostname, "nerves"],
+  hosts: [:hostname, "livebook"],
   ttl: 120,
 
   # Advertise the following services over mDNS.

@@ -45,6 +45,7 @@ defmodule NervesLivebook.MixProject do
       {:nerves_pack, "~> 0.6.0"},
       {:livebook, "~> 0.3.1", only: [:dev, :prod]},
       {:plug, "~> 1.12"},
+      {:inky, path: "~/dev/forks/inky", targets: @all_targets},
 
       # Pull in commonly used libraries as a convenience to users.
       {:vega_lite, "~> 0.1"},
@@ -53,7 +54,7 @@ defmodule NervesLivebook.MixProject do
       {:circuits_uart, "~> 1.3", targets: @all_targets},
       {:circuits_gpio, "~> 1.0 or ~> 0.4", targets: @all_targets},
       {:circuits_i2c, "~> 1.0 or ~> 0.3", targets: @all_targets},
-      {:circuits_spi, "~> 1.0 or ~> 0.1", targets: @all_targets},
+      {:circuits_spi, "~> 1.0", targets: @all_targets},
       {:nerves_key, "~> 1.0", targets: @all_targets},
       {:pigpiox, "~>0.1", targets: @rpi_targets},
       {:ramoops_logger, "~> 0.1", targets: @all_targets},
