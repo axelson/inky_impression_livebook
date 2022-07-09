@@ -1,5 +1,13 @@
 import Config
 
+config :dash, :viewport,
+  drivers: [
+    [
+      module: ScenicDriverInky,
+      opts: [type: :impression, color_low: 120, dithering: false]
+    ]
+  ]
+
 # Use shoehorn to start the main application. See the shoehorn
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
@@ -11,6 +19,7 @@ config :shoehorn, init: [:nerves_runtime, :nerves_pack]
 # configuring ring_logger.
 
 config :logger, backends: [RingLogger, RamoopsLogger]
+config :logger, RingLogger, format: "$time $metadata[$level] $levelpad$message\n"
 
 # Erlinit can be configured without a rootfs_overlay. See
 # https://github.com/nerves-project/erlinit/ for more information on

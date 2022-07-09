@@ -4,6 +4,11 @@ This is a shell that is meant to be used to work on inky impression support http
 
 Based https://github.com/livebook-dev/nerves_livebook
 
+Snippets
+
+export MIX_TARGET=rpi0
+Inky.Impression.RpiIO.init(gpio_mod: Circuits.GPIO, spi_mod: Circuits.SPI)
+
 ## License
 
 Copyright (C) 2021-22 Frank Hunleth

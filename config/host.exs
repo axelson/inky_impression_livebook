@@ -1,5 +1,16 @@
 import Config
 
+config :dash, :viewport, [
+  drivers: [
+    [
+      module: Scenic.Driver.Local,
+      name: :local,
+      window: [resizeable: false, title: "Impression Dash"],
+      on_close: :stop_system
+    ]
+  ]
+]
+
 config :nerves_runtime,
   target: "host"
 

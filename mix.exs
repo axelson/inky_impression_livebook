@@ -50,7 +50,9 @@ defmodule NervesLivebook.MixProject do
       {:nerves_pack, "~> 0.7.0"},
       {:livebook, "~> 0.6.2"},
       {:plug, "~> 1.12"},
-      {:inky, path: "~/dev/forks/inky", targets: @all_targets},
+      {:scenic_driver_inky, path: "~/dev/forks/scenic_driver_inky"},
+
+      {:inky, path: "~/dev/forks/inky", targets: @all_targets, override: true},
 
       # Pull in commonly used libraries as a convenience to users.
       {:blue_heron, "~> 0.3", override: true, targets: @ble_targets},
@@ -60,7 +62,9 @@ defmodule NervesLivebook.MixProject do
       {:circuits_i2c, "~> 1.0"},
       {:circuits_spi, "~> 1.0 or ~> 0.1"},
       {:circuits_uart, "~> 1.3"},
-      {:input_event, "~> 1.0 or ~> 0.4", targets: @all_targets},
+      # Override for scenic_driver_local
+      # https://github.com/ScenicFramework/scenic_driver_local/pull/11
+      {:input_event, "~> 1.0 or ~> 0.4", targets: @all_targets, override: true},
       {:kino, "~> 0.6"},
       {:kino_maplibre, "~> 0.1.0"},
       {:kino_vega_lite, "~> 0.1.1"},

@@ -5,6 +5,15 @@ Application.start(:nerves_bootstrap)
 
 config :nerves_livebook, target: Mix.target()
 
+config :dash, :viewport, [
+  name: :main_viewport,
+  # Make the ssize match the impression's resolution
+  size: {600, 448},
+  theme: :dark,
+  default_scene: Dash.Scene.Home,
+  drivers: []
+]
+
 # Customize non-Elixir parts of the firmware. See
 # https://hexdocs.pm/nerves/advanced-configuration.html for details.
 
