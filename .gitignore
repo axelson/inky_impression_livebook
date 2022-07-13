@@ -20,3 +20,4 @@ upload.sh
 erl_crash.dump
 
 .nerves-live-reload
+.target.secret.exs

@@ -1,0 +1,34 @@
+# Inky Impression
+
+## Section
+
+```elixir
+text_input = Kino.Input.textarea("Quote")
+```
+
+```elixir
+background_color_input =
+  Kino.Input.select("Background Color",
+    white: "White",
+    green: "Green",
+    blue: "Blue",
+    red: "Red",
+    yellow: "Yellow",
+    orange: "Orange"
+  )
+```
+
+```elixir
+text = Kino.Input.read(text_input)
+background_color = Kino.Input.read(background_color_input)
+
+if text != "" && background_color do
+  IO.puts("Displaying: #{text}")
+  Dash.set_quote(text, background_color)
+end
+```
+
+```elixir
+# There's also a color test scene that's built-in to the firmware
+Dash.switch_scene(:color_test)
+```

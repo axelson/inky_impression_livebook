@@ -50,9 +50,18 @@ defmodule NervesLivebook.MixProject do
       {:nerves_pack, "~> 0.7.0"},
       {:livebook, "~> 0.6.2"},
       {:plug, "~> 1.12"},
-      {:scenic_driver_inky, path: "~/dev/forks/scenic_driver_inky"},
+      {:scenic, github: "boydm/scenic", branch: "v0.11", override: true},
 
-      {:inky, path: "~/dev/forks/inky", targets: @all_targets, override: true},
+      # {:dash, path: "~/dev/impression_dash"},
+      {:dash, github: "axelson/impression_dash"},
+
+      # Waiting for https://github.com/pappersverk/inky/pull/47 to be merged
+      # and then https://github.com/pappersverk/inky/pull/37
+      {:inky, github: "axelson/inky", branch: "impression", targets: @all_targets, override: true},
+      # {:inky, github: "pappersverk/inky", branch: "impression", targets: @all_targets, override: true},
+
+      # Waiting for https://github.com/pappersverk/scenic_driver_inky/pull/7 to be merged
+      {:scenic_driver_inky, github: "axelson/scenic_driver_inky", branch: "scenic-0.11", targets: @all_targets},
 
       # Pull in commonly used libraries as a convenience to users.
       {:blue_heron, "~> 0.3", override: true, targets: @ble_targets},
@@ -64,7 +73,8 @@ defmodule NervesLivebook.MixProject do
       {:circuits_uart, "~> 1.3"},
       # Override for scenic_driver_local
       # https://github.com/ScenicFramework/scenic_driver_local/pull/11
-      {:input_event, "~> 1.0 or ~> 0.4", targets: @all_targets, override: true},
+      # {:input_event, "~> 1.0 or ~> 0.4", targets: @all_targets, override: true},
+      {:input_event, "~> 1.0 or ~> 0.4", override: true},
       {:kino, "~> 0.6"},
       {:kino_maplibre, "~> 0.1.0"},
       {:kino_vega_lite, "~> 0.1.1"},
@@ -106,7 +116,8 @@ defmodule NervesLivebook.MixProject do
       overwrite: true,
       include_erts: &Nerves.Release.erts/0,
       steps: [&Nerves.Release.init/1, :assemble],
-      strip_beams: [keep: ["Docs"]]
+      strip_beams: [keep: ["Docs"]],
+      config_providers: [{Jax.RuntimeConfigProvider, "/data/.target.secret.exs"}]
     ]
   end
 

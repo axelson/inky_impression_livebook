@@ -2,9 +2,16 @@
 
 This is a shell that is meant to be used to work on inky impression support https://github.com/pappersverk/inky/issues/36
 
-Based https://github.com/livebook-dev/nerves_livebook
+Based on https://github.com/livebook-dev/nerves_livebook
 
-Snippets
+## Getting Started
+
+``` sh
+ssh livebook.local
+Dash.Release.migrate()
+```
+
+## Snippets
 
 export MIX_TARGET=rpi0
 Inky.Impression.RpiIO.init(gpio_mod: Circuits.GPIO, spi_mod: Circuits.SPI)

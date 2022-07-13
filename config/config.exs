@@ -5,6 +5,11 @@ Application.start(:nerves_bootstrap)
 
 config :nerves_livebook, target: Mix.target()
 
+config :scenic, :assets,
+  module: Dash.Assets
+
+config :nerves_livebook, ecto_repos: [Dash.Repo]
+
 config :dash, :viewport, [
   name: :main_viewport,
   # Make the ssize match the impression's resolution

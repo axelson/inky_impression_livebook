@@ -3,10 +3,24 @@ import Config
 config :dash, :viewport,
   drivers: [
     [
+      module: Scenic.Driver.Local
+      # name: :jax_local,
+    ],
+    [
       module: ScenicDriverInky,
-      opts: [type: :impression, color_low: 120, dithering: false]
+      opts: [type: :impression, color_low: 120, dithering: true]
     ]
   ]
+
+config :dash, ecto_repos: [Dash.Repo]
+
+config :dash, Dash.Repo,
+  database: "/data/dash_database.db",
+  migration_primary_key: [type: :binary_id],
+  journal_mode: :wal,
+  cache_size: -64_000,
+  temp_store: :memory,
+  pool_size: 1
 
 # Use shoehorn to start the main application. See the shoehorn
 # docs for separating out critical OTP applications such as those
