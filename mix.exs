@@ -41,7 +41,7 @@ defmodule NervesLivebook.MixProject do
   defp deps do
     [
       # Dependencies for host and target
-      {:nerves, "~> 1.8.0", runtime: false},
+      {:nerves, "~> 1.9.3", runtime: false},
       {:shoehorn, "~> 0.9.0"},
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
@@ -52,8 +52,8 @@ defmodule NervesLivebook.MixProject do
       {:plug, "~> 1.12"},
       {:scenic, github: "boydm/scenic", branch: "v0.11", override: true},
 
-      # {:dash, path: "~/dev/impression_dash"},
-      {:dash, github: "axelson/impression_dash"},
+      {:dash, path: "~/dev/impression_dash"},
+      # {:dash, github: "axelson/impression_dash"},
 
       # Waiting for https://github.com/pappersverk/inky/pull/47 to be merged
       # and then https://github.com/pappersverk/inky/pull/37

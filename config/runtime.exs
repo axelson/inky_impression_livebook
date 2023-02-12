@@ -1,4 +1,5 @@
 import Config
+IO.inspect(Application.get_all_env(:mime), label: "Application.get_all_env(:mime) (runtime.exs:2)")
 
 mix_target = Application.get_env(:nerves_livebook, :target)
 
